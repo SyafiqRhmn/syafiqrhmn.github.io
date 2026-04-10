@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Syafiqurrahman — Graphic Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  --red:#e8200e;
+  --red-dark:#b01a0a;
+  --ink:#0e0d0c;
+  --ink-2:#3d3b38;
+  --ink-3:#9a9691;
+  --paper:#ffffff;
+  --paper-2:#f4f2ee;
+  --paper-3:#ede9e2;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Syne',sans-serif;
+  --mono:'DM Mono',monospace;
+  --pad:clamp(1.25rem,5vw,3.5rem);
+}
+
+html{scroll-behavior:smooth;}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);overflow-x:hidden;}
+
+/* cursor */
+body{cursor:none;}
+#cur{position:fixed;width:8px;height:8px;border-radius:50%;background:var(--red);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s,height .3s,background .3s;mix-blend-mode:multiply;}
+#cur.big{width:36px;height:36px;background:var(--ink);}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.4rem var(--pad);display:flex;align-items:center;justify-content:space-between;mix-blend-mode:multiply;}
+.logo{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2);text-decoration:none;}
+.nav-r{display:flex;gap:2.5rem;list-style:none;}
+.nav-r a{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-2);text-decoration:none;transition:color .25s;}
+.nav-r a:hover{color:var(--red);}
+
+/* ── HERO ── */
+#hero{min-height:100vh;display:grid;grid-template-rows:1fr auto;padding:0 var(--pad);position:relative;overflow:hidden;}
+
+.hero-inner{display:flex;align-items:flex-end;justify-content:space-between;padding:9rem 0 4rem;position:relative;z-index:2;flex-wrap:wrap;gap:2rem;}
+
+.hero-tag{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:1.4rem;display:flex;align-items:center;gap:.75rem;}
+.hero-tag::before{content:'';width:32px;height:1px;background:var(--ink-3);}
+
+h1.hero-hed{font-family:var(--serif);font-size:clamp(5rem,13vw,12rem);font-weight:300;line-height:.88;letter-spacing:-.03em;}
+h1.hero-hed em{font-style:italic;color:var(--red);}
+
+.hero-right{max-width:20rem;}
+.hero-sub{font-family:var(--serif);font-size:1.15rem;font-weight:300;line-height:1.75;color:var(--ink-2);margin-bottom:2rem;}
+.hero-contacts{display:flex;flex-direction:column;gap:.6rem;}
+.hc{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--ink-3);text-decoration:none;transition:color .2s;}
+.hc:hover{color:var(--red);}
+.hc span{color:var(--ink-2);}
+
+/* big bg word */
+.hero-bg{position:absolute;bottom:-3rem;right:-1rem;font-family:var(--serif);font-size:clamp(14rem,35vw,32rem);font-weight:300;font-style:italic;color:var(--paper-2);line-height:1;pointer-events:none;user-select:none;z-index:1;letter-spacing:-.04em;}
+
+/* ticker */
+.ticker{border-top:1px solid var(--paper-3);padding:.85rem 0;overflow:hidden;position:relative;z-index:2;}
+.t-track{display:flex;gap:3.5rem;animation:tick 22s linear infinite;width:max-content;}
+.t-item{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap;display:flex;align-items:center;gap:.75rem;}
+.t-dot{width:4px;height:4px;border-radius:50%;background:var(--red);flex-shrink:0;}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── SECTION COMMON ── */
+section{padding:5rem var(--pad);}
+.s-label{font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin-bottom:2.5rem;display:flex;align-items:center;gap:.75rem;}
+.s-label::before{content:'';width:20px;height:1px;background:var(--ink-3);}
+.s-title{font-family:var(--serif);font-size:clamp(2.5rem,6vw,5.5rem);font-weight:300;line-height:1;letter-spacing:-.02em;margin-bottom:3rem;}
+
+/* ── ABOUT ── */
+#about{background:var(--ink);color:var(--paper);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.about-grid .s-label{color:rgba(255,255,255,.3);}
+.about-grid .s-label::before{background:rgba(255,255,255,.3);}
+.a-hed{font-family:var(--serif);font-size:clamp(2.2rem,5vw,4rem);font-weight:300;line-height:1.1;letter-spacing:-.02em;margin-bottom:1.8rem;}
+.a-hed em{color:var(--red);font-style:italic;}
+.a-bio{font-family:var(--serif);font-size:1.1rem;font-weight:300;line-height:1.85;color:rgba(255,255,255,.55);margin-bottom:2.5rem;}
+.a-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1);}
+.st-n{font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--red);line-height:1;}
+.st-l{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.3rem;}
+
+.skills-list{display:flex;flex-direction:column;}
+.skill-row{padding:1.4rem 0;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between;transition:padding-left .35s ease;position:relative;overflow:hidden;}
+.skill-row::after{content:'';position:absolute;inset:0;background:rgba(232,32,14,.12);transform:translateX(-101%);transition:transform .4s cubic-bezier(.7,0,.3,1);}
+.skill-row:hover{padding-left:1.2rem;}
+.skill-row:hover::after{transform:translateX(0);}
+.sk-name{font-family:var(--serif);font-size:1.3rem;font-weight:300;color:var(--paper);position:relative;z-index:1;}
+.sk-num{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:rgba(255,255,255,.25);position:relative;z-index:1;}
+
+/* ── EXPERIENCE ── */
+#exp{background:var(--paper-2);}
+.exp-items{display:flex;flex-direction:column;gap:0;}
+.exp-item{padding:2rem 0;border-bottom:1px solid rgba(0,0,0,.08);display:grid;grid-template-columns:1fr 2fr;gap:2rem;align-items:start;}
+.exp-left{}
+.exp-co{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink);margin-bottom:.3rem;}
+.exp-period{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);}
+.exp-role{font-family:var(--serif);font-size:1.2rem;font-weight:400;color:var(--ink);margin-bottom:.5rem;}
+.exp-desc{font-family:var(--serif);font-size:.95rem;font-weight:300;line-height:1.75;color:var(--ink-2);}
+
+/* ── WORK SECTIONS ── */
+.work-section{background:var(--paper);}
+.work-section:nth-of-type(even){background:var(--paper-2);}
+
+.ws-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem;}
+.ws-num{font-family:var(--serif);font-size:6rem;font-weight:300;font-style:italic;color:var(--paper-3);line-height:1;user-select:none;}
+
+/* Socmed grid */
+.socmed-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.sm-card{position:relative;overflow:hidden;background:var(--paper-3);cursor:none;}
+.sm-card-inner{aspect-ratio:1;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:transform .6s cubic-bezier(.6,0,.4,1);}
+.sm-card:hover .sm-card-inner{transform:scale(1.05);}
+.sm-preview{width:100%;height:100%;object-fit:cover;display:block;}
+/* Colored placeholder blocks for socmed */
+.sp-1{background:linear-gradient(135deg,#1a3a1a 0%,#2d5a1a 100%);display:flex;align-items:center;justify-content:center;}
+.sp-2{background:linear-gradient(135deg,#1a1a3a 0%,#3a1a2a 100%);}
+.sp-3{background:linear-gradient(135deg,#3a1a1a 0%,#5a2a1a 100%);}
+.sp-4{background:linear-gradient(135deg,#1a2a3a 0%,#1a3a3a 100%);}
+.sp-5{background:#0e0d0c;}
+.sp-6{background:linear-gradient(135deg,#3a2a1a 0%,#5a3a1a 100%);}
+.sp-7{background:linear-gradient(135deg,#1a1a1a 0%,#2a1a0a 100%);}
+.sp-8{background:linear-gradient(135deg,#1a3a2a 0%,#0a2a1a 100%);}
+
+.sm-label{padding:.75rem 1rem;font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);}
+
+/* Flyer grid */
+.flyer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+.fl-card{position:relative;overflow:hidden;cursor:none;}
+.fl-thumb{aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:transform .6s cubic-bezier(.6,0,.4,1);}
+.fl-card:hover .fl-thumb{transform:scale(1.04);}
+.fl-meta{padding:.8rem 0;border-top:1px solid rgba(0,0,0,.06);display:flex;justify-content:space-between;align-items:center;}
+.fl-name{font-family:var(--sans);font-size:12px;font-weight:500;color:var(--ink);}
+.fl-tag{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);}
+
+/* flyer visual placeholders */
+.fv-1{background:#8b1414;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:1.5rem;}
+.fv-2{background:#1a2d1a;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:1.5rem;}
+.fv-3{background:#0d0d0d;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:1.5rem;}
+.fv-4{background:#7a1010;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:1.5rem;}
+.fv-5{background:#1e3a1e;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:1.5rem;}
+.fv-6{background:#2a0a0a;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:1.5rem;}
+
+.fv-title{font-family:var(--sans);font-size:clamp(.9rem,2.5vw,1.4rem);font-weight:800;text-transform:uppercase;color:white;line-height:1.1;letter-spacing:.01em;}
+.fv-sub{font-family:var(--mono);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:.4rem;}
+
+/* Clothing grid */
+.cloth-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+.cl-card{position:relative;cursor:none;overflow:hidden;}
+.cl-thumb{aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:var(--ink);overflow:hidden;transition:transform .6s cubic-bezier(.6,0,.4,1);}
+.cl-card:hover .cl-thumb{transform:scale(1.03);}
+.cl-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:2rem;}
+.cl-text-vis{display:flex;flex-direction:column;gap:.5rem;width:100%;}
+.cl-front{font-family:var(--mono);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);text-align:center;}
+.cl-main{font-family:var(--sans);font-weight:800;text-transform:uppercase;color:white;text-align:center;line-height:1;}
+.cl-main.big{font-size:clamp(1.1rem,3vw,2rem);}
+.cl-sub{font-family:var(--mono);font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);text-align:center;}
+.cl-meta{padding:.7rem 0;border-top:1px solid rgba(0,0,0,.06);display:flex;justify-content:space-between;}
+.cl-name{font-family:var(--sans);font-size:12px;font-weight:500;color:var(--ink);}
+.cl-brand{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);}
+
+/* Thumbnail/banner grid */
+.banner-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;}
+.bn-card{position:relative;cursor:none;overflow:hidden;}
+.bn-thumb{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:transform .6s cubic-bezier(.6,0,.4,1);}
+.bn-card:hover .bn-thumb{transform:scale(1.03);}
+.bv-1{background:#1a1a18;}
+.bv-2{background:#2a1a14;}
+.bv-3{background:#141a1a;}
+.bv-4{background:#1a1418;}
+.bn-inner{width:100%;height:100%;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:1.5rem;position:relative;}
+.bn-inner::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 60%);}
+.bn-label-vis{font-family:var(--sans);font-size:clamp(.85rem,2.5vw,1.4rem);font-weight:800;text-transform:uppercase;color:white;position:relative;z-index:1;line-height:1.1;}
+.bn-sub-vis{font-family:var(--mono);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:.35rem;position:relative;z-index:1;}
+.bn-meta{padding:.7rem 0;border-top:1px solid rgba(0,0,0,.06);display:flex;justify-content:space-between;}
+.bn-name{font-family:var(--sans);font-size:12px;font-weight:500;color:var(--ink);}
+.bn-tag{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);}
+
+/* Digital Imaging */
+.dig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+.dg-card{cursor:none;overflow:hidden;}
+.dg-thumb{aspect-ratio:4/5;overflow:hidden;transition:transform .6s cubic-bezier(.6,0,.4,1);}
+.dg-card:hover .dg-thumb{transform:scale(1.04);}
+.dv-1{background:#1a1410;display:flex;align-items:center;justify-content:center;}
+.dv-2{background:#0e1014;display:flex;align-items:center;justify-content:center;}
+.dv-3{background:#14100e;display:flex;align-items:center;justify-content:center;}
+.dv-1b{background:#1a1208;}
+.dv-2b{background:#0a0c14;}
+.dg-vis{width:70%;height:70%;border:1px solid rgba(255,255,255,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.dg-vis-inner{font-family:var(--serif);font-size:1rem;font-style:italic;color:rgba(255,255,255,.15);text-align:center;padding:1rem;}
+.dg-meta{padding:.7rem 0;border-top:1px solid rgba(0,0,0,.06);display:flex;justify-content:space-between;}
+
+/* ── CONTACT CTA ── */
+#contact{background:var(--ink);color:var(--paper);text-align:center;padding:7rem var(--pad);}
+.ct-small{font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1.5rem;display:block;}
+.ct-big{font-family:var(--serif);font-size:clamp(3.5rem,10vw,9rem);font-weight:300;letter-spacing:-.03em;line-height:.95;margin-bottom:3rem;}
+.ct-big em{font-style:italic;color:var(--red);}
+.ct-links{display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;margin-top:3rem;}
+.ct-link{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;transition:color .25s;padding-bottom:2px;border-bottom:1px solid rgba(255,255,255,.12);}
+.ct-link:hover{color:var(--red);border-color:var(--red);}
+
+/* ── FOOTER ── */
+footer{background:#090908;color:var(--paper);padding:1.5rem var(--pad);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.f-logo{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);}
+.f-copy{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:rgba(255,255,255,.2);}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s ease;}
+.rv.on{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-inner{flex-direction:column;align-items:flex-start;}
+  .about-grid{grid-template-columns:1fr;}
+  .socmed-grid{grid-template-columns:repeat(2,1fr);}
+  .flyer-grid{grid-template-columns:repeat(2,1fr);}
+  .cloth-grid{grid-template-columns:repeat(2,1fr);}
+  .exp-item{grid-template-columns:1fr;}
+  .nav-r{display:none;}
+  body{cursor:auto;}
+  #cur{display:none;}
+}
+@media(max-width:580px){
+  .socmed-grid{grid-template-columns:1fr 1fr;}
+  .flyer-grid{grid-template-columns:1fr;}
+  .cloth-grid{grid-template-columns:1fr 1fr;}
+  .banner-grid{grid-template-columns:1fr;}
+  .dig-grid{grid-template-columns:1fr 1fr;}
+  .a-stats{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+<div id="cur"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">syafiqurrahman™</a>
+  <ul class="nav-r">
+    <li><a href="#about">About</a></li>
+    <li><a href="#exp">Experience</a></li>
+    <li><a href="#socmed">Socmed</a></li>
+    <li><a href="#flyer">Flyer</a></li>
+    <li><a href="#clothing">Clothing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">port<em style="font-style:italic;color:#f0eee9;">fo</em></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-tag rv">© 2025 — Graphic Designer</div>
+      <h1 class="hero-hed rv d1">Hello,<br>I'm <em>Syafiq.</em></h1>
+    </div>
+    <div class="hero-right rv d2">
+      <p class="hero-sub">Desainer grafis freelance berbasis di Surabaya — spesialis social media, flyer, clothing design, dan digital imaging.</p>
+      <div class="hero-contacts">
+        <a href="mailto:syafiqurrahman802@gmail.com" class="hc"><span>Email</span> — syafiqurrahman802@gmail.com</a>
+        <a href="tel:+6287896213987" class="hc"><span>WA</span> — +62 878 9621 3987</a>
+        <a href="https://instagram.com/syafiqrhmn" class="hc"><span>IG</span> — @syafiqrhmn</a>
+      </div>
+    </div>
+  </div>
+  <div class="ticker">
+    <div class="t-track">
+      <div class="t-item"><span class="t-dot"></span>Social Media Design</div>
+      <div class="t-item"><span class="t-dot"></span>Flyer Design</div>
+      <div class="t-item"><span class="t-dot"></span>Clothing Design</div>
+      <div class="t-item"><span class="t-dot"></span>Thumbnail & Banner</div>
+      <div class="t-item"><span class="t-dot"></span>Digital Imaging</div>
+      <div class="t-item"><span class="t-dot"></span>Brand Identity</div>
+      <div class="t-item"><span class="t-dot"></span>Maduranese CO</div>
+      <div class="t-item"><span class="t-dot"></span>Rilpolitik.com</div>
+      <div class="t-item"><span class="t-dot"></span>LSPI</div>
+      <!-- dup -->
+      <div class="t-item"><span class="t-dot"></span>Social Media Design</div>
+      <div class="t-item"><span class="t-dot"></span>Flyer Design</div>
+      <div class="t-item"><span class="t-dot"></span>Clothing Design</div>
+      <div class="t-item"><span class="t-dot"></span>Thumbnail & Banner</div>
+      <div class="t-item"><span class="t-dot"></span>Digital Imaging</div>
+      <div class="t-item"><span class="t-dot"></span>Brand Identity</div>
+      <div class="t-item"><span class="t-dot"></span>Maduranese CO</div>
+      <div class="t-item"><span class="t-dot"></span>Rilpolitik.com</div>
+      <div class="t-item"><span class="t-dot"></span>LSPI</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div>
+      <div class="s-label rv">Tentang</div>
+      <h2 class="a-hed rv d1">Desain adalah<br>bahasa <em>yang jujur.</em></h2>
+      <p class="a-bio rv d2">Saya Syafiqurrahman, graphic designer freelance yang fokus pada komunikasi visual yang efektif dan purposeful. Dari pesantren hingga media politik — saya menghadirkan desain yang sesuai konteks dan audiensnya.</p>
+      <div class="a-stats rv d3">
+        <div><div class="st-n">3+</div><div class="st-l">Klien Aktif</div></div>
+        <div><div class="st-n">3</div><div class="st-l">Tahun Experience</div></div>
+        <div><div class="st-n">5</div><div class="st-l">Kategori Desain</div></div>
+      </div>
+    </div>
+    <div class="rv d1">
+      <div class="skills-list">
+        <div class="skill-row"><span class="sk-name">Social Media Design</span><span class="sk-num">01</span></div>
+        <div class="skill-row"><span class="sk-name">Flyer & Poster</span><span class="sk-num">02</span></div>
+        <div class="skill-row"><span class="sk-name">Clothing Design</span><span class="sk-num">03</span></div>
+        <div class="skill-row"><span class="sk-name">Thumbnail & Banner</span><span class="sk-num">04</span></div>
+        <div class="skill-row"><span class="sk-name">Digital Imaging</span><span class="sk-num">05</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="exp">
+  <div class="s-label rv">Working Experience</div>
+  <h2 class="s-title rv d1"><em style="font-style:italic;font-family:'Cormorant Garamond',serif;">Pengalaman</em></h2>
+  <div class="exp-items">
+
+    <div class="exp-item rv">
+      <div class="exp-left">
+        <div class="exp-co">Pondok Pesantren<br>Miftahul Ihsan</div>
+        <div class="exp-period">Jul 2022 — Present · Freelance</div>
+      </div>
+      <div>
+        <div class="exp-role">Graphic Designer</div>
+        <p class="exp-desc">Mendesain materi untuk berbagai kebutuhan pesantren — social media, brosur, flyer kegiatan. Memastikan semua material selaras dengan identitas brand pesantren, dari prototipe desain hingga hasil cetak akhir.</p>
+      </div>
+    </div>
+
+    <div class="exp-item rv d1">
+      <div class="exp-left">
+        <div class="exp-co">MADURANESE CO</div>
+        <div class="exp-period">Jan 2022 — Present · Freelance</div>
+      </div>
+      <div>
+        <div class="exp-role">Graphic Designer</div>
+        <p class="exp-desc">Mendesain materi produk clothing brand Madura-centric, termasuk desain kaos dan material promosi. Mengawal seluruh proses dari konsep desain hingga produksi akhir.</p>
+      </div>
+    </div>
+
+    <div class="exp-item rv d2">
+      <div class="exp-left">
+        <div class="exp-co">Rilpolitik.com</div>
+        <div class="exp-period">Jan 2024 — Present · Freelance</div>
+      </div>
+      <div>
+        <div class="exp-role">Graphic Designer</div>
+        <p class="exp-desc">Mendesain untuk berbagai kebutuhan portal berita politik — social media design, website banner, konten infografis. Memastikan konsistensi identitas visual media di semua platform.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SOCMED DESIGN -->
+<section id="socmed" class="work-section">
+  <div class="ws-header">
+    <div>
+      <div class="s-label rv">Karya — 01</div>
+      <h2 class="s-title rv d1">Socmed Design</h2>
+    </div>
+    <div class="ws-num rv">01</div>
+  </div>
+  <div class="socmed-grid">
+
+    <div class="sm-card rv">
+      <div class="sm-card-inner sp-1">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:1.5rem;width:100%;height:100%;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 60%);">
+          <div style="font-family:'Syne',sans-serif;font-size:clamp(1.2rem,3vw,1.8rem);font-weight:800;color:white;text-transform:uppercase;line-height:1.05;">pengajian<br>umum</div>
+          <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.12em;color:rgba(255,255,255,.45);margin-top:.4rem;text-transform:uppercase;">Miftahul Ihsan</div>
+        </div>
+      </div>
+      <div class="sm-label">Pengajian Umum — Pesantren</div>
+    </div>
+
+    <div class="sm-card rv d1">
+      <div class="sm-card-inner" style="background:#2a2a1e;aspect-ratio:1;">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:1.5rem;width:100%;height:100%;background:linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 60%);">
+          <div style="font-family:'Syne',sans-serif;font-size:clamp(.9rem,2.5vw,1.3rem);font-weight:700;color:white;text-transform:uppercase;line-height:1.1;">festival dan<br>kirab budaya</div>
+          <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.12em;color:rgba(255,255,255,.4);margin-top:.3rem;text-transform:uppercase;">24 Juni 2024</div>
+        </div>
+      </div>
+      <div class="sm-label">Festival Kirab Budaya</div>
+    </div>
+
+    <div class="sm-card rv d2">
+      <div class="sm-card-inner sp-3">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:1.5rem;width:100%;height:100%;background:linear-gradient(to top,rgba(0,0,0,.65) 0%,transparent 60%);">
+          <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.16em;color:var(--red);text-transform:uppercase;margin-bottom:.4rem;">rilpolitik.com</div>
+          <div style="font-family:'Syne',sans-serif;font-size:clamp(1rem,2.5vw,1.5rem);font-weight:800;color:white;text-transform:uppercase;line-height:1.05;">PAK LURAH<br>NGEBET<br>3 PERIODE</div>
+        </div>
+      </div>
+      <div class="sm-label">Pak Lurah 3 Periode — Rilpolitik</div>
+    </div>
+
+    <div class="sm-card rv d3">
+      <div class="sm-card-inner sp-4">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:1.5rem;width:100%;height:100%;background:linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 60%);">
+          <div style="font-family:'Syne',sans-serif;font-size:clamp(.9rem,2.5vw,1.3rem);font-weight:800;color:white;text-transform:uppercase;line-height:1.1;">Peresmian<br>Lapangan Futsal<br>Yasmian</div>
+          <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.12em;color:rgba(255,255,255,.4);margin-top:.3rem;text-transform:uppercase;">Pesantren</div>
+        </div>
+      </div>
+      <div class="sm-label">Peresmian Futsal Yasmian</div>
+    </div>
+
+    <div class="sm-card rv">
+      <div class="sm-card-inner" style="background:#1a1208;aspect-ratio:1;">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:1.5rem;width:100%;height:100%;background:linear-gradient(to top,rgba(0,0,0,.65) 0%,transparent 60%);">
+          <div style="font-family:'Syne',sans-serif;font-size:clamp(1rem,2.5vw,1.6rem);font-weight:800;color:white;text-transform:uppercase;line-height:1.05;">PENGAJIAN<br>UMUM</div>
+          <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.12em;color:rgba(255,255,255,.4);margin-top:.3rem;text-transform:uppercase;">Miftahul Ihsan Errabu · KH. Malik Sanusi</div>
+        </div>
+      </div>
+      <div class="sm-label">Pengajian Umum — Errabu</div>
+    </div>
+
+    <div class="sm-card rv d1">
+      <div class="sm-card-inner" style="background:#0a1228;aspect-ratio:1;">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:1.5rem;width:100%;height:100%;background:linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 60%);">
+          <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.16em;color:var(--red);text-transform:uppercase;margin-bottom:.3rem;">rilpolitik.com</div>
+          <div style="font-family:'Syne',sans-serif;font-size:clamp(.85rem,2.2vw,1.2rem);font-weight:800;color:white;text-transform:uppercase;line-height:1.1;">Daftar<br>Pelanggaran<br>Anwar Usman</div>
+        </div>
+      </div>
+      <div class="sm-label">Daftar Pelanggaran — Rilpolitik</div>
+    </div>
+
+    <div class="sm-card rv d2">
+      <div class="sm-card-inner" style="background:#141008;aspect-ratio:1;">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:1.5rem;width:100%;height:100%;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 60%);">
+          <div style="font-family:'Syne',sans-serif;font-size:clamp(1.2rem,3vw,1.8rem);font-weight:800;color:white;text-transform:uppercase;line-height:1.05;">SEMARAH<br>LOMBA</div>
+          <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.12em;color:rgba(255,255,255,.4);margin-top:.3rem;text-transform:uppercase;">HUT RI Ke-78 · Desa Errabu</div>
+        </div>
+      </div>
+      <div class="sm-label">HUT RI Ke-78 — Desa Errabu</div>
+    </div>
+
+    <div class="sm-card rv d3">
+      <div class="sm-card-inner" style="background:#1a1a0e;aspect-ratio:1;">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:1.5rem;width:100%;height:100%;background:linear-gradient(to top,rgba(0,0,0,.65) 0%,transparent 60%);">
+          <div style="font-family:'Syne',sans-serif;font-size:clamp(.85rem,2.2vw,1.2rem);font-weight:700;color:white;text-transform:uppercase;line-height:1.1;">Bincang Santuy<br>Bareng Alumni</div>
+          <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.12em;color:rgba(255,255,255,.4);margin-top:.3rem;text-transform:uppercase;">05 Agst 2022 · Zoom</div>
+        </div>
+      </div>
+      <div class="sm-label">Bincang Alumni — Pesantren</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FLYER DESIGN -->
+<section id="flyer" style="background:var(--paper-2);">
+  <div class="ws-header">
+    <div>
+      <div class="s-label rv">Karya — 02</div>
+      <h2 class="s-title rv d1">Flyer Design</h2>
+    </div>
+    <div class="ws-num rv">02</div>
+  </div>
+  <div class="flyer-grid">
+
+    <div class="fl-card rv">
+      <div class="fl-thumb fv-1">
+        <div style="width:100%;height:100%;padding:1.5rem;display:flex;flex-direction:column;justify-content:space-between;">
+          <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.14em;color:rgba(255,255,255,.35);text-transform:uppercase;">LSPI</div>
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,3vw,1.6rem);font-style:italic;color:rgba(255,100,100,.9);font-weight:400;margin-bottom:.5rem;">Refleksi 27 Tahun<br>Reformasi 98:</div>
+            <div style="font-family:'Syne',sans-serif;font-size:clamp(.85rem,2.2vw,1.1rem);font-weight:700;color:white;line-height:1.2;text-transform:uppercase;">Menjaga Api<br>Perjuangan</div>
+            <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-top:.5rem;text-transform:uppercase;">24 Mei 2025</div>
+          </div>
+        </div>
+      </div>
+      <div class="fl-meta"><span class="fl-name">Refleksi Reformasi 98</span><span class="fl-tag">LSPI</span></div>
+    </div>
+
+    <div class="fl-card rv d1">
+      <div class="fl-thumb fv-2">
+        <div style="width:100%;height:100%;padding:1.5rem;display:flex;flex-direction:column;justify-content:space-between;">
+          <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.14em;color:rgba(255,255,255,.3);text-transform:uppercase;">Pondok Pesantren Miftahul Ihsan</div>
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-size:clamp(1.1rem,3vw,1.8rem);font-weight:800;color:#ffd700;text-transform:uppercase;line-height:1;">TEMU ALUMNI</div>
+            <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.12em;color:rgba(255,255,255,.5);margin-top:.4rem;text-transform:uppercase;">Lintas Generasi · 16 Agustus 2023</div>
+          </div>
+        </div>
+      </div>
+      <div class="fl-meta"><span class="fl-name">Temu Alumni</span><span class="fl-tag">Miftahul Ihsan</span></div>
+    </div>
+
+    <div class="fl-card rv d2">
+      <div class="fl-thumb fv-3">
+        <div style="width:100%;height:100%;padding:1.5rem;display:flex;flex-direction:column;justify-content:space-between;">
+          <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.14em;color:rgba(255,255,255,.3);text-transform:uppercase;">rilpolitik.com</div>
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-size:clamp(1rem,3vw,1.5rem);font-weight:800;color:white;text-transform:uppercase;line-height:1.1;">TERJERAT<br>DUIT HARAM<br><span style="color:var(--red);">BTS</span></div>
+            <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;color:rgba(255,255,255,.3);margin-top:.4rem;text-transform:uppercase;">Korupsi BPK</div>
+          </div>
+        </div>
+      </div>
+      <div class="fl-meta"><span class="fl-name">Terjerat Duit Haram BTS</span><span class="fl-tag">Rilpolitik</span></div>
+    </div>
+
+    <div class="fl-card rv">
+      <div class="fl-thumb fv-4">
+        <div style="width:100%;height:100%;padding:1.5rem;display:flex;flex-direction:column;justify-content:space-between;">
+          <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.14em;color:rgba(255,255,255,.3);text-transform:uppercase;">LSPI · diskusi publik</div>
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-size:clamp(.85rem,2.5vw,1.2rem);font-weight:800;color:white;text-transform:uppercase;line-height:1.15;">PEMILU 2024:<br>ANTARA DEMOKRASI<br>DAN TANTANGAN<br>DISINTEGRASI</div>
+            <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-top:.4rem;text-transform:uppercase;">15 Oktober 2023</div>
+          </div>
+        </div>
+      </div>
+      <div class="fl-meta"><span class="fl-name">Diskusi Publik Pemilu 2024</span><span class="fl-tag">LSPI</span></div>
+    </div>
+
+    <div class="fl-card rv d1">
+      <div class="fl-thumb fv-5">
+        <div style="width:100%;height:100%;padding:1.5rem;display:flex;flex-direction:column;justify-content:space-between;">
+          <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.14em;color:rgba(255,255,255,.3);text-transform:uppercase;">OSIM YASMI · Pondok Pesantren</div>
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-size:clamp(1rem,3vw,1.7rem);font-weight:800;color:#ffd700;text-transform:uppercase;line-height:1.05;">LOMBA<br>DAI CILIK</div>
+            <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.12em;color:rgba(255,255,255,.4);margin-top:.4rem;text-transform:uppercase;">Tingkat SD/MI</div>
+          </div>
+        </div>
+      </div>
+      <div class="fl-meta"><span class="fl-name">Lomba Dai Cilik</span><span class="fl-tag">Pesantren</span></div>
+    </div>
+
+    <div class="fl-card rv d2">
+      <div class="fl-thumb fv-6">
+        <div style="width:100%;height:100%;padding:1.5rem;display:flex;flex-direction:column;justify-content:space-between;">
+          <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.14em;color:rgba(255,255,255,.3);text-transform:uppercase;">rilpolitik.com · diskusi publik</div>
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-size:clamp(.8rem,2.2vw,1.1rem);font-weight:800;color:white;text-transform:uppercase;line-height:1.2;">POLITIK GENTONG BABI:<br>PILKADA MADURA</div>
+            <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-top:.4rem;text-transform:uppercase;">22 November 2024 · Sumenep</div>
+          </div>
+        </div>
+      </div>
+      <div class="fl-meta"><span class="fl-name">Politik Gentong Babi</span><span class="fl-tag">Rilpolitik</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CLOTHING DESIGN -->
+<section id="clothing" class="work-section">
+  <div class="ws-header">
+    <div>
+      <div class="s-label rv">Karya — 03</div>
+      <h2 class="s-title rv d1">Clothing Design</h2>
+    </div>
+    <div class="ws-num rv">03</div>
+  </div>
+  <div class="cloth-grid">
+
+    <div class="cl-card rv">
+      <div class="cl-thumb">
+        <div class="cl-inner">
+          <div class="cl-text-vis">
+            <div class="cl-front">Maduranese</div>
+            <div class="cl-main big">TATANGGHEH</div>
+            <div class="cl-sub">Tatanggheh St. Ngacaca</div>
+          </div>
+        </div>
+      </div>
+      <div class="cl-meta"><span class="cl-name">Tatanggheh</span><span class="cl-brand">Maduranese CO</span></div>
+    </div>
+
+    <div class="cl-card rv d1">
+      <div class="cl-thumb">
+        <div class="cl-inner">
+          <div class="cl-text-vis">
+            <div class="cl-front">Maduranese</div>
+            <div class="cl-main big" style="font-size:clamp(1rem,2.8vw,1.7rem);">SOGHI ESAREH<br>MISKEN ECALEH</div>
+            <div class="cl-sub">Based on True Story · Realita Kaddi'en</div>
+          </div>
+        </div>
+      </div>
+      <div class="cl-meta"><span class="cl-name">Soghi Esareh</span><span class="cl-brand">Maduranese CO</span></div>
+    </div>
+
+    <div class="cl-card rv d2">
+      <div class="cl-thumb">
+        <div class="cl-inner">
+          <div class="cl-text-vis">
+            <div class="cl-front">Maduranese</div>
+            <div class="cl-main big" style="font-size:clamp(.95rem,2.5vw,1.5rem);">SENNENG LOPPAH<br>SOSSA NYAPAH</div>
+            <div class="cl-sub">Bila Badan, Nyamanah Bula Maklugah</div>
+          </div>
+        </div>
+      </div>
+      <div class="cl-meta"><span class="cl-name">Senneng Loppah</span><span class="cl-brand">Maduranese CO</span></div>
+    </div>
+
+    <div class="cl-card rv">
+      <div class="cl-thumb">
+        <div class="cl-inner">
+          <div class="cl-text-vis">
+            <div class="cl-front">Maduranese</div>
+            <div class="cl-main big" style="font-size:clamp(.9rem,2.4vw,1.4rem);">Kaos Larang<br>Kan Se Mude<br>Dhikah Lek</div>
+            <div class="cl-sub">Aghejai ghun jhei pamonac ko olah wkwkwk</div>
+          </div>
+        </div>
+      </div>
+      <div class="cl-meta"><span class="cl-name">Kaos Larang</span><span class="cl-brand">Maduranese CO</span></div>
+    </div>
+
+    <div class="cl-card rv d1">
+      <div class="cl-thumb" style="background:#f0f0f0;">
+        <div class="cl-inner" style="background:#f0f0f0;">
+          <div class="cl-text-vis">
+            <div class="cl-front" style="color:rgba(0,0,0,.3);">Benni Nak-Kanak</div>
+            <div class="cl-main big" style="color:#1a4aaf;font-size:clamp(.95rem,2.6vw,1.6rem);">DESTAKDES</div>
+            <div class="cl-sub" style="color:rgba(0,0,0,.3);">Benni Nak-Kanak · Destakdes</div>
+          </div>
+        </div>
+      </div>
+      <div class="cl-meta"><span class="cl-name">Destakdes</span><span class="cl-brand">Maduranese CO</span></div>
+    </div>
+
+    <div class="cl-card rv d2">
+      <div class="cl-thumb">
+        <div class="cl-inner">
+          <div class="cl-text-vis">
+            <div class="cl-front">Maduranese</div>
+            <div class="cl-main big" style="font-size:clamp(1.5rem,4vw,2.8rem);letter-spacing:.05em;">laep</div>
+            <div class="cl-sub">Digital Imaging · Clothing</div>
+          </div>
+        </div>
+      </div>
+      <div class="cl-meta"><span class="cl-name">Laep</span><span class="cl-brand">Maduranese CO</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- THUMBNAIL & BANNER -->
+<section id="banner" style="background:var(--paper-2);">
+  <div class="ws-header">
+    <div>
+      <div class="s-label rv">Karya — 04</div>
+      <h2 class="s-title rv d1">Thumbnail & Banner</h2>
+    </div>
+    <div class="ws-num rv">04</div>
+  </div>
+  <div class="banner-grid">
+
+    <div class="bn-card rv">
+      <div class="bn-thumb bv-1">
+        <div class="bn-inner">
+          <div style="position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.02) 0,rgba(255,255,255,.02) 1px,transparent 1px,transparent 40px);"></div>
+          <div class="bn-label-vis">LSPI — Lingkar Studi Politik Indonesia</div>
+          <div class="bn-sub-vis">Pattern Background · Branding Asset</div>
+        </div>
+      </div>
+      <div class="bn-meta"><span class="bn-name">LSPI Branding Pattern</span><span class="bn-tag">Banner</span></div>
+    </div>
+
+    <div class="bn-card rv d1">
+      <div class="bn-thumb bv-2">
+        <div class="bn-inner">
+          <div class="bn-label-vis">Diskusi Publik — RUU POLRI</div>
+          <div class="bn-sub-vis">16 June 2025 · LSPI</div>
+        </div>
+      </div>
+      <div class="bn-meta"><span class="bn-name">Diskusi Publik RUU POLRI</span><span class="bn-tag">Thumbnail</span></div>
+    </div>
+
+    <div class="bn-card rv">
+      <div class="bn-thumb bv-3">
+        <div class="bn-inner">
+          <div class="bn-label-vis">Refleksi Reformasi 98 — Seminar Nasional</div>
+          <div class="bn-sub-vis">24 Mei 2025 · Jakarta · LSPI</div>
+        </div>
+      </div>
+      <div class="bn-meta"><span class="bn-name">Seminar Nasional Reformasi 98</span><span class="bn-tag">Banner</span></div>
+    </div>
+
+    <div class="bn-card rv d1">
+      <div class="bn-thumb bv-4">
+        <div class="bn-inner">
+          <div class="bn-label-vis">Indonesia, Pemilu 2024 & Ancaman Ekstremisme</div>
+          <div class="bn-sub-vis">Kalonta · Thumbnail</div>
+        </div>
+      </div>
+      <div class="bn-meta"><span class="bn-name">Ancaman Ekstremisme 2024</span><span class="bn-tag">Thumbnail</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DIGITAL IMAGING -->
+<section id="imaging" class="work-section">
+  <div class="ws-header">
+    <div>
+      <div class="s-label rv">Karya — 05</div>
+      <h2 class="s-title rv d1">Digital Imaging</h2>
+    </div>
+    <div class="ws-num rv">05</div>
+  </div>
+  <div class="dig-grid">
+
+    <div class="dg-card rv">
+      <div class="dg-thumb dv-1">
+        <div class="dg-vis"><div class="dg-vis-inner" style="font-size:1.5rem;color:rgba(255,255,255,.2);">B&W<br>Duotone</div></div>
+      </div>
+      <div class="dg-meta"><span class="fl-name">B&W Composite Edit</span><span class="fl-tag">Digital Imaging</span></div>
+    </div>
+
+    <div class="dg-card rv d1">
+      <div class="dg-thumb dv-2">
+        <div class="dg-vis" style="border-color:rgba(180,100,20,.15);"><div class="dg-vis-inner" style="color:rgba(255,160,40,.2);">Orange<br>Duotone</div></div>
+      </div>
+      <div class="dg-meta"><span class="fl-name">Orange Duotone Edit</span><span class="fl-tag">Digital Imaging</span></div>
+    </div>
+
+    <div class="dg-card rv d2">
+      <div class="dg-thumb dv-3">
+        <div class="dg-vis" style="border-color:rgba(100,40,180,.15);"><div class="dg-vis-inner" style="color:rgba(140,80,220,.2);">Purple<br>Duotone</div></div>
+      </div>
+      <div class="dg-meta"><span class="fl-name">Purple Duotone Edit</span><span class="fl-tag">Digital Imaging</span></div>
+    </div>
+
+    <div class="dg-card rv">
+      <div class="dg-thumb" style="background:#100c08;">
+        <div class="dg-vis" style="border-color:rgba(255,255,255,.06);"><div class="dg-vis-inner" style="color:rgba(255,255,255,.12);">B&W<br>Portrait</div></div>
+      </div>
+      <div class="dg-meta"><span class="fl-name">Portrait — B&W</span><span class="fl-tag">Digital Imaging</span></div>
+    </div>
+
+    <div class="dg-card rv d1">
+      <div class="dg-thumb" style="background:#080c14;">
+        <div class="dg-vis" style="border-color:rgba(255,255,255,.06);"><div class="dg-vis-inner" style="color:rgba(255,255,255,.12);">Composite<br>Photography</div></div>
+      </div>
+      <div class="dg-meta"><span class="fl-name">Composite Photography</span><span class="fl-tag">Digital Imaging</span></div>
+    </div>
+
+    <div class="dg-card rv d2">
+      <div class="dg-thumb" style="background:#0c0e0a;">
+        <div class="dg-vis" style="border-color:rgba(255,255,255,.06);"><div class="dg-vis-inner" style="color:rgba(255,255,255,.12);">Photo<br>Manipulation</div></div>
+      </div>
+      <div class="dg-meta"><span class="fl-name">Photo Manipulation</span><span class="fl-tag">Digital Imaging</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <span class="ct-small rv">Ayo Kolaborasi</span>
+  <h2 class="ct-big rv d1">Punya proyek<br><em>yang menarik?</em></h2>
+  <div class="ct-links rv d2">
+    <a href="mailto:syafiqurrahman802@gmail.com" class="ct-link">syafiqurrahman802@gmail.com</a>
+    <a href="tel:+6287896213987" class="ct-link">+62 878 9621 3987</a>
+    <a href="https://instagram.com/syafiqrhmn" class="ct-link">@syafiqrhmn</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="f-logo">syafiqurrahman™</span>
+  <span class="f-copy">© 2025 Syafiqurrahman. All rights reserved.</span>
+</footer>
+
+<script>
+const cur = document.getElementById('cur');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX + 'px';
+  cur.style.top = e.clientY + 'px';
+});
+document.querySelectorAll('a,.sm-card,.fl-card,.cl-card,.bn-card,.dg-card,.skill-row').forEach(el => {
+  el.addEventListener('mouseenter', () => cur.classList.add('big'));
+  el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+});
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); obs.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+setTimeout(() => {
+  document.querySelectorAll('#hero .rv').forEach(el => el.classList.add('on'));
+}, 80);
+</script>
+</body>
+</html>
